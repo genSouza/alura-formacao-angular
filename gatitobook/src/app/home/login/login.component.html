@@ -8,7 +8,10 @@
       type="text"
       [(ngModel)]="user"
       name="user"
+      #userField="ngModel"
+      required
     />
+    <app-message *ngIf="userField.invalid" message="Usuário obrigatório"></app-message>
   </div>
   <div class="form-group mb-3">
     <input
@@ -17,7 +20,10 @@
       type="password"
       [(ngModel)]="password"
       name="password"
+      #passwordField="ngModel"
+      required
     />
+    <app-message *ngIf="passwordField.invalid" message="Senha obrigatório"></app-message>
   </div>
   <div class="d-grid gap-2">
     <button type="submit" class="btn btn-primary">Login</button>
