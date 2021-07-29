@@ -2,6 +2,7 @@ import { NewUserService } from './new-user.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NewUser } from './new-user';
+import { lowerCaseValidator } from './lowerCase.validator';
 
 @Component({
   selector: 'app-new-user',
@@ -20,7 +21,7 @@ export class NewUserComponent implements OnInit {
     this.newUserForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       fullName: ['',[Validators.required, Validators.minLength(4)]],
-      userName: ['', [Validators.required, Validators.minLength(4)]],
+      userName: ['', [Validators.required, Validators.minLength(4), lowerCaseValidator]],
       password: ['', [Validators.required, Validators.minLength(7)]],
     });
   }
