@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NewUser } from './new-user';
 import { lowerCaseValidator } from './lowerCase.validator';
 import { userPasswordValidator } from './user-password.validator';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-user',
@@ -17,7 +18,8 @@ export class NewUserComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private newUserService: NewUserService,
-    private userExistsService: UserExistsService
+    private userExistsService: UserExistsService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -39,7 +41,18 @@ export class NewUserComponent implements OnInit {
   }
 
   createNewUser() {
-    const newUser = this.newUserForm.getRawValue() as NewUser;
-    console.log(newUser);
+    if (this.newUserForm.valid) {
+      const newUser = this.newUserForm.getRawValue() as NewUser;
+      this.newUserService.createNewUser(newUser).subscribe(
+        () => {
+          this.router.navigate(['']);
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    }else {
+      console.log('form is invalid');
+    }
   }
 }
