@@ -1,3 +1,5 @@
+import { NewUser } from './new-user';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,5 +7,10 @@ import { Injectable } from '@angular/core';
 })
 export class NewUserService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  createNewUser(user: NewUser){
+    return this.http.post('http://localhost:3000/user/signup', user);
+  }
+
 }
