@@ -26,7 +26,11 @@ export class AuthenticationService {
       )
       .pipe(
         tap((res) => {
+          console.log('called login auth service');
+          console.debug(res);
           const authToken = res.headers.get('x-access-token') ?? '';
+          console.log(authToken);
+
           this.userService.saveToken(authToken);
         })
       );
