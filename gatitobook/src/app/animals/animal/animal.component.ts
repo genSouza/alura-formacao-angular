@@ -1,6 +1,7 @@
+import { environment } from './../../../environments/environment.prod';
 import { Component, Input, OnInit } from '@angular/core';
 
-const API: string = 'http://localhost:3000';
+const API: string = environment.apiUrl;
 
 @Component({
   selector: 'app-animal',
