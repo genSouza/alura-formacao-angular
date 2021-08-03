@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
   login() {
     this.authService.authenticate(this.user, this.password).subscribe(
       () => {
-        console.log('called login');
         console.log('autenticado com sucesso');
         this.router.navigate(['animais']);
       },
