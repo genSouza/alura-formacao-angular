@@ -1,1 +1,3 @@
-<app-grid-animals-photo [animals]="animals"></app-grid-animals-photo>
+<div *ngIf="animals$ | async as animals">
+  <app-grid-animals-photo [animals]="animals"></app-grid-animals-photo>
+</div>
