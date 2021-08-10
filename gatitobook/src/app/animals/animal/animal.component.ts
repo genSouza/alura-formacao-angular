@@ -9,7 +9,6 @@ const API: string = environment.apiUrl;
   styleUrls: ['./animal.component.css'],
 })
 export class AnimalComponent implements OnInit {
-
   @Input()
   set url(url: string) {
     if (url.startsWith('data')) {
@@ -19,6 +18,8 @@ export class AnimalComponent implements OnInit {
     }
   }
 
+  @Input()
+  description: string = '';
   @Input()
   alt: string = '';
 
