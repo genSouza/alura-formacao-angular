@@ -1,5 +1,5 @@
 <div *ngIf="comments$ | async as comments">
-  <ul class="list-unstyled">
+  <ul class="list-unstyled comment-list">
     <li *ngFor="let item of comments">
       <p class="text-dark font-weight-bold mr-1">{{ item.userName }}</p>
       <em>{{ item.date | date: "dd-MM-yyyy HH:mm" }}</em>
@@ -8,11 +8,11 @@
   </ul>
 
   <div class="mt-4">
-    <form [formGroup]="commentForm" (Submit)="save()">
+    <form [formGroup]="commentForm" (submit)="save()">
       <div class="input-group">
         <textarea class="form-control" formControlName="comment"></textarea>
         <div class="input-group-append">
-          <button [disabled]="commentForm.invalid" class="btn btn-primary pull-left">Publicar</button>
+          <button [disabled]="commentForm.invalid" class="btn btn-primary pull-left" type="submit">Publicar</button>
         </div>
       </div>
       <app-message *ngIf=" !!commentForm.get('comment')?.errors?.maxLength" message="Tamanho máximo de 300 caracteres"></app-message>
