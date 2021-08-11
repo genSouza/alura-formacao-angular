@@ -15,6 +15,7 @@
           <button [disabled]="commentForm.invalid" class="btn btn-primary pull-left">Publicar</button>
         </div>
       </div>
+      <app-message *ngIf=" !!commentForm.get('comment')?.errors?.maxLength" message="Tamanho máximo de 300 caracteres"></app-message>
     </form>
   </div>
 </div>
