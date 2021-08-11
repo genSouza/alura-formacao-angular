@@ -8,6 +8,7 @@ import { AnimalComponent } from './animal/animal.component';
 import { GridAnimalsPhotoComponent } from './grid-animals-photo/grid-animals-photo.component';
 import { AnimalDetailComponent } from './animal-detail/animal-detail.component';
 import { CommentsComponent } from './animal-detail/comments/comments.component';
+import { NewAnimalComponent } from './new-animal/new-animal.component';
 @NgModule({
   declarations: [
     AnimalsListComponent,
@@ -15,6 +16,7 @@ import { CommentsComponent } from './animal-detail/comments/comments.component';
     GridAnimalsPhotoComponent,
     AnimalDetailComponent,
     CommentsComponent,
+    NewAnimalComponent,
   ],
   imports: [CommonModule, AnimalsRoutingModule, CardModule, SharedModule],
 })

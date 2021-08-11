@@ -1,3 +1,4 @@
+import { NewAnimalComponent } from './new-animal/new-animal.component';
 import { AnimalsListResolver } from './animals-list/animals-list.resolver';
 import { AnimalDetailComponent } from './animal-detail/animal-detail.component';
 
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: ':animalId',
     component: AnimalDetailComponent,
+  },
+  {
+    path: 'novo',
+    component: NewAnimalComponent,
   },
 ];
 

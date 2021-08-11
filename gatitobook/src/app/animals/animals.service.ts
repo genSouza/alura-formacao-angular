@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Animal, Animals } from './animals';
 import { catchError, mapTo } from 'rxjs/operators';
+import { ThrowStmt } from '@angular/compiler';
 
 const API = environment.apiUrl;
 const NOT_MODIFIED = '304';
@@ -35,5 +36,17 @@ export class AnimalsService {
           return error.status === NOT_MODIFIED ? of(false) : throwError(error);
         })
       );
+  }
+
+  upload(description: string, allowComments: boolean, file: File) {
+    const formData = new FormData();
+    formData.append('description', description);
+    formData.append('allowComments', allowComments ? 'true' : 'false');
+    formData.append('imageFile', file);
+
+    return this.http.post(`${API}/photos/upload`, formData, {
+      observe: 'events',
+      reportProgress: true,
+    });
   }
 }
