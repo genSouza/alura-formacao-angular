@@ -15,12 +15,12 @@ const routes: Routes = [
     },
   },
   {
-    path: ':animalId',
-    component: AnimalDetailComponent,
-  },
-  {
     path: 'novo',
     component: NewAnimalComponent,
+  },
+  {
+    path: ':animalId',
+    component: AnimalDetailComponent,
   },
 ];
 
