@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-
 @Component({
   selector: 'app-yes-no-button-group',
   templateUrl: './yes-no-button-group.component.html',
@@ -20,6 +19,11 @@ export class YesNoButtonGroupComponent implements OnInit {
   public label = '';
 
   /**
+   * Component default options
+  */
+
+  options = YesNoButtonGroupOptions;
+  /**
    * @internal
    */
   constructor() {}
@@ -28,4 +32,13 @@ export class YesNoButtonGroupComponent implements OnInit {
    * @internal
    */
   ngOnInit(): void {}
+
+  public activate(value: string): void {
+    this.value = value;
+  }
+}
+
+enum YesNoButtonGroupOptions {
+  YES = 'yes',
+  NO = 'no',
 }
