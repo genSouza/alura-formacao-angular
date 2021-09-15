@@ -1,10 +1,24 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ControlValueAccessor } from '@angular/forms';
+import {
+  Component,
+  EventEmitter,
+  forwardRef,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-yes-no-button-group',
   templateUrl: './yes-no-button-group.component.html',
   styleUrls: ['./yes-no-button-group.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      multi: true,
+      useExisting: forwardRef(() => YesNoButtonGroupComponent),
+    },
+  ],
 })
 export class YesNoButtonGroupComponent implements OnInit, ControlValueAccessor {
   /**
@@ -39,9 +53,15 @@ export class YesNoButtonGroupComponent implements OnInit, ControlValueAccessor {
    */
   constructor() {}
 
+  /**
+   * @internal
+   */
+  ngOnInit(): void {}
+
   public writeValue(value: any): void {
     this.value = value;
     this.onChange(this.value);
+    this.valueChange.emit(this.value);
   }
 
   public registerOnChange(fn: (value: string) => void): void {
@@ -56,14 +76,8 @@ export class YesNoButtonGroupComponent implements OnInit, ControlValueAccessor {
     throw new Error('Method not implemented.');
   }
 
-  /**
-   * @internal
-   */
-  ngOnInit(): void {}
-
   public activate(value: string): void {
-    this.value = value;
-    this.valueChange.emit(this.value);
+    this.writeValue(value);
   }
 }
 
