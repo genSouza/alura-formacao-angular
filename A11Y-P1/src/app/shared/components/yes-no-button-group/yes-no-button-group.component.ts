@@ -1,4 +1,4 @@
-import { UniqueIdService } from './../../unique-id/unique-id.service';
+import { UniqueIdService } from '../../services/unique-id/unique-id.service';
 import {
   Component,
   EventEmitter,
