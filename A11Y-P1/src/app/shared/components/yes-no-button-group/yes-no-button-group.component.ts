@@ -24,16 +24,22 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class YesNoButtonGroupComponent implements OnInit, ControlValueAccessor {
   /**
-   *
+   * default value input
    */
   @Input()
   public value: string = null;
 
   /**
-   *
+   * default label
    */
   @Input()
   public label = '';
+
+  /**
+   * disabled state input
+  */
+  @Input()
+  public disabled = false;
 
   /**
    * value button output
@@ -44,12 +50,22 @@ export class YesNoButtonGroupComponent implements OnInit, ControlValueAccessor {
   /**
    * Component default options
    */
-
   public options = YesNoButtonGroupOptions;
 
+  /**
+   *
+   * @param value
+   */
   public onChange = (value: string) => {};
+
+  /**
+   *
+   */
   public onTouched = () => {};
 
+  /**
+   *
+  */
   public id: string = null;
 
   /**
@@ -79,7 +95,7 @@ export class YesNoButtonGroupComponent implements OnInit, ControlValueAccessor {
   }
 
   public setDisabledState?(isDisabled: boolean): void {
-    throw new Error('Method not implemented.');
+    this.disabled = isDisabled;
   }
 
   public activate(value: string): void {

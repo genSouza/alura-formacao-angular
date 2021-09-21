@@ -1,7 +1,10 @@
 <main>
   <h1>Form</h1>
   <form [formGroup]="formGroup" (ngSubmit)="submit()">
-    <app-yes-no-button-group label="Você aceita os termos do serviço?" formControlName="yesNoAnswer">
+    <app-yes-no-button-group
+      label="Você aceita os termos do serviço?"
+      formControlName="yesNoAnswer"
+    >
     </app-yes-no-button-group>
     <button>Confirmar</button>
   </form>
