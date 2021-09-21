@@ -1,3 +1,28 @@
+<div class="button-group" role="radiogroup" [attr.aria-label]="label">
+  <label>{{ label }}</label>
+  <div class="radio">
+    <input
+      [attr.id]="id + '-yes'"
+      type="radio"
+      [attr.name]="id"
+      [attr.checked]="value === options.YES"
+      (change)="activate(options.YES)"
+    />
+    <label [attr.for]="id + '-yes'" class="button button-yes">Sim</label>
+  </div>
+  <div class="radio">
+    <input
+      [attr.id]="id + '-no'"
+      type="radio"
+      [attr.name]="id"
+      [attr.checked]="value === options.NO"
+      (change)="activate(options.NO)"
+    />
+    <label [attr.for]="id + '-no'" class="button button-no">Não</label>
+  </div>
+</div>
+
+<!--
 <div role="radiogroup" [attr.aria-labelledby]="id" class="button-group" appKm>
   <label [attr.id]="id" for="" class="label">{{ label }}</label>
   <button
@@ -28,4 +53,4 @@
   >
     Não
   </button>
-</div>
+</div> -->
