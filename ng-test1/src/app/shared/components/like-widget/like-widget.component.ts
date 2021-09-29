@@ -18,7 +18,7 @@ export class LikeWidgetComponent implements OnInit {
    * unique id
    */
   @Input()
-  public id = null;
+  public id: string = null;
 
   /**
    * like emitter
