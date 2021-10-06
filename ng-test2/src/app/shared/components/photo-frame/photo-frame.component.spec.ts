@@ -18,4 +18,11 @@ describe(PhotoFrameComponent.name, () => {
     expect(component).toBeTruthy();
   });
 
+  it(`#${PhotoFrameComponent.prototype.like.name} should trigger (@output liked) once multiple within debounce time`, () => {
+    fixture.detectChanges();
+    let times = 0;
+    component.liked.subscribe(() => {
+      times++;
+    });
+  });
 });
