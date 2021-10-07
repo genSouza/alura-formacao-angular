@@ -1,3 +1,4 @@
+import { ActionModule } from './../../directives/action/action.module';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -8,7 +9,8 @@ import { LikeWidgetComponent } from './like-widget.component';
   declarations: [LikeWidgetComponent],
   imports: [
     CommonModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ActionModule
   ],
   exports: [LikeWidgetComponent],
   providers: [UniqueIdService]
