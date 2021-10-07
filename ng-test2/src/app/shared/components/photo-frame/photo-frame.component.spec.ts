@@ -1,4 +1,3 @@
-import { element } from 'protractor';
 import { PhotoFrameModule } from './photo-frame.module';
 import {
   ComponentFixture,
@@ -80,5 +79,20 @@ describe(PhotoFrameComponent.name, () => {
     const img: HTMLImageElement = fixture.nativeElement.querySelector('img');
     expect(img.getAttribute('src')).toBe(src);
     expect(img.getAttribute('alt')).toBe(description);
+  });
+
+  it(`(D) Should display number of likes when clicked`, (done) => {
+    fixture.detectChanges();
+    component.liked.subscribe(() => {
+      component.likes++;
+      fixture.detectChanges();
+      const counterEl: HTMLElement =
+        fixture.nativeElement.querySelector('.like-counter');
+      expect(counterEl.textContent.trim()).toBe('1');
+      done();
+    });
+    const likeWidgetContainerEl: HTMLElement =
+      fixture.nativeElement.querySelector('.like-widget-container');
+    likeWidgetContainerEl.click();
   });
 });
