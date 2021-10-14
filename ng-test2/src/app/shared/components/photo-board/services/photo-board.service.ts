@@ -20,7 +20,6 @@ export class PhotoBoardService {
           });
         })
       )
-      .pipe(tap((photos) => console.log(photos)))
       .pipe(delay(2000));
   }
 }
